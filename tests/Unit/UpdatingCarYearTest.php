@@ -17,9 +17,10 @@ class UpdatingCarYearTest extends TestCase
      */
     public function testExample()
     {
-        #$car = factory(Car::class)->create();
-        $car =  Car::first();
-        #dd($car);
-        $this->assertTrue(is_string($car->year));
+        $data['year'] = '2000';
+        $user = Car::first();
+        $user->update($data);
+        $this->assertInstanceOf(Car::class, $user);
+        $this->assertEquals($data['year'], $user->year);
     }
 }
